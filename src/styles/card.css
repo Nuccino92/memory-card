@@ -1,0 +1,180 @@
+.card {
+  display: block;
+  height: 200px;
+  width: 150px;
+  border: 1px solid white;
+  align-items: center;
+  justify-self: center;
+  background: rgb(236, 205, 30);
+  cursor: pointer;
+  padding: 7px;
+  border-radius: 10px;
+  z-index: 10;
+}
+
+.card-inner {
+  height: 100%;
+  padding-top: 7px;
+  background-color: none;
+}
+
+#grass {
+  background: rgb(108, 251, 63);
+  background: radial-gradient(
+    circle,
+    rgba(108, 251, 63, 1) 0%,
+    rgb(25, 216, 60) 20%,
+    rgba(15, 153, 33, 0.942) 100%
+  );
+}
+
+#fire {
+  background: rgb(251, 148, 63);
+  background: radial-gradient(
+    circle,
+    rgba(251, 148, 63, 1) 0%,
+    rgba(249, 0, 51, 1) 100%
+  );
+}
+
+#water {
+  background: rgb(63, 215, 251);
+  background: radial-gradient(
+    circle,
+    rgb(62, 126, 179) 0%,
+    rgba(0, 5, 249, 0.9416141456582633) 100%
+  );
+}
+
+#flying {
+  background-color: silver;
+}
+
+#bug {
+  background: radial-gradient(
+    circle,
+    rgb(128, 179, 62) 0%,
+    rgba(102, 167, 17, 0.942) 100%
+  );
+}
+
+#poison {
+  background: radial-gradient(
+    circle,
+    rgb(144, 92, 167) 0%,
+    rgba(94, 22, 136, 0.942) 100%
+  );
+}
+
+#normal {
+  background: rgb(211, 216, 218);
+  background: radial-gradient(
+    circle,
+    rgb(168, 168, 168) 0%,
+    rgba(124, 124, 126, 0.942) 100%
+  );
+}
+
+#electric {
+  background: radial-gradient(
+    circle,
+    rgb(255, 252, 74) 0%,
+    rgba(170, 160, 18, 0.942) 100%
+  );
+}
+
+#ground {
+  background: radial-gradient(
+    circle,
+    rgb(253, 156, 100) 0%,
+    rgba(189, 130, 35, 0.942) 100%
+  );
+}
+
+#fairy {
+  background: radial-gradient(
+    circle,
+    rgb(199, 193, 193) 0%,
+    rgba(164, 164, 192, 0.942) 100%
+  );
+}
+
+#fighting {
+  background: radial-gradient(
+    circle,
+    rgb(253, 156, 100) 0%,
+    rgba(189, 130, 35, 0.942) 100%
+  );
+}
+
+#psychic {
+  background: radial-gradient(
+    circle,
+    rgb(144, 92, 167) 0%,
+    rgba(184, 95, 235, 0.942) 100%
+  );
+}
+
+#rock {
+  background: radial-gradient(
+    circle,
+    rgb(253, 156, 100) 0%,
+    rgba(189, 130, 35, 0.942) 100%
+  );
+}
+
+#steel {
+  background: radial-gradient(
+    circle,
+    rgb(199, 193, 193) 0%,
+    rgba(164, 164, 192, 0.942) 100%
+  );
+}
+
+#ice {
+  background: radial-gradient(
+    circle,
+    rgb(124, 211, 221) 0%,
+    rgb(63, 51, 231) 100%
+  );
+}
+
+#ghost {
+  background: radial-gradient(
+    circle,
+    rgb(189, 127, 216) 0%,
+    rgba(161, 59, 219, 0.942) 100%
+  );
+}
+
+#dragon {
+  background: radial-gradient(
+    circle,
+    rgb(206, 205, 205) 0%,
+    rgba(189, 189, 189, 0.942) 100%
+  );
+}
+
+.card-inner > img {
+  display: block;
+  margin: 0 auto;
+  border: 2px solid rgb(236, 205, 30);
+  border-radius: 3px;
+  background: linear-gradient(
+    332deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(233, 45, 253, 1) 100%
+  );
+}
+
+.card-inner > h3 {
+  text-align: center;
+  margin-top: 17px;
+  font-family: monospace;
+}
+
+.card-inner > h4 {
+  text-align: center;
+  margin-top: 17px;
+  font-family: monospace;
+}
