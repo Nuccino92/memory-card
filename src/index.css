@@ -1,0 +1,15 @@
+@import url(./styles/header.css);
+@import url(./App.css);
+@import url(./styles/gameboard.css);
+@import url(./styles/card.css);
+@import url("https://fonts.googleapis.com/css2?family=Arimo&family=Luckiest+Guy&family=Press+Start+2P&display=swap");
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Luckiest Guy", cursive;
+}
+
+body {
+  background-color: black;
+}
