@@ -1,0 +1,12 @@
+header {
+  text-align: center;
+}
+
+.header-image-container {
+  margin-top: 30px;
+}
+
+.header-image-container > img {
+  height: 110px;
+  width: 870px;
+}
