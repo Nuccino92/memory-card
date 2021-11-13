@@ -1,0 +1,10 @@
+.background-image {
+  position: absolute;
+  z-index: -1000;
+  top: 50%;
+  right: 50%;
+  transform: translate(50%, -50%);
+  height: 80%;
+  width: 80%;
+  border: 1px solid rgb(93, 93, 93);
+}
