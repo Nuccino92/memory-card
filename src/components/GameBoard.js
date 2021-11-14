@@ -4,6 +4,7 @@ import { shuffle } from "../resources/shuffle";
 import fetchPokemon from "../resources/fetchPokemon";
 import Card from "./Card";
 import { checkRound } from "../helpers/checkRound";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const GameBoard = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -11,19 +12,18 @@ const GameBoard = () => {
   const [gen, setGen] = useState(1);
   const [selected, setSelected] = useState([]);
   const [score, setScore] = useState(0);
-
-  useEffect(() => {
-    console.log(round);
-  }, [round]);
+  const [loading, setLoading] = useState(true);
 
   const handleClick = (name) => {
-    const gameOver = selected.find((element) => element === name);
+    const gameOver = selected.find((val) => val === name);
     if (gameOver) {
-      console.log("Game Over");
+      shuffle(pokemon);
       setRound(0);
       setScore(0);
+
       return setSelected([]);
     }
+    shuffle(pokemon);
     setScore((prev) => prev + 1);
 
     // add name to the end of the array
@@ -33,30 +33,37 @@ const GameBoard = () => {
   useEffect(() => {
     if (checkRound(round, score)) {
       setRound((prev) => prev + 1);
+      setSelected([]);
     }
   }, [score]);
 
   useEffect(() => {
+    setLoading(true);
     const getCards = async () => {
       setPokemon(await fetchPokemon(round, gen));
     };
     getCards();
+    setLoading(false);
   }, [round, gen]);
 
   return (
     <div className="gameboard">
-      <div className="gameboard-card-container">
-        {shuffle(pokemon).map((each, index) => {
-          return (
-            <Card
-              id={index}
-              pokemon={each}
-              key={uniqid()}
-              handleClick={handleClick}
-            />
-          );
-        })}
-      </div>
+      {loading ? (
+        <ClipLoader size={100} color={"white"} loading={loading} />
+      ) : (
+        <div className="gameboard-card-container">
+          {pokemon.map((each, index) => {
+            return (
+              <Card
+                id={index}
+                pokemon={each}
+                key={uniqid()}
+                handleClick={handleClick}
+              />
+            );
+          })}
+        </div>
+      )}
       <button onClick={() => setGen(1)}>Gen 1</button>
       <button onClick={() => setGen(2)}>Gen 2</button>
     </div>
