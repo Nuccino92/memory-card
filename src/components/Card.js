@@ -6,13 +6,28 @@ const Card = (props) => {
       className="card"
       onClick={(e) => props.handleClick(props.pokemon.name)}
     >
-      <div className="card-inner" id={props.pokemon.type}>
+      <div
+        className={
+          props.pokemon.image.includes("shiny")
+            ? "card-inner shiny-style"
+            : "card-inner"
+        }
+        id={props.pokemon.type}
+      >
         <img src={props.pokemon.image} alt="pokemon" />
-        <h3>{props.pokemon.name}</h3>
-        <h4>{props.pokemon.type}</h4>
+        <h3
+          style={props.pokemon.image.includes("shiny") ? shinyStyle : undefined}
+        >
+          {props.pokemon.name}
+        </h3>
+        <h4>{props.pokemon.type} type</h4>
       </div>
     </div>
   );
+};
+
+const shinyStyle = {
+  color: "gold",
 };
 
 export default Card;
