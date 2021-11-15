@@ -11,11 +11,9 @@ const fetchPokemon = async (round, gen) => {
 
   for (let i = 1; i <= amount; i += 1) {
     let number;
-    if (gen === 1) {
-      number = Math.round(Math.random() * (152 - 1) + 1);
-    } else {
-      number = Math.round(Math.random() * (252 - 152) + 152);
-    }
+    gen === 1
+      ? (number = Math.round(Math.random() * (152 - 1) + 1))
+      : (number = Math.round(Math.random() * (252 - 152) + 152));
 
     const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${number}`;
 
