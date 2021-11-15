@@ -13,15 +13,14 @@ const GameBoard = () => {
   const [selected, setSelected] = useState([]);
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(true);
+  const [gameOver, setGameOver] = useState();
+  const [levelUp, setLevelUp] = useState();
 
   const handleClick = (name) => {
-    const gameOver = selected.find((val) => val === name);
-    if (gameOver) {
-      shuffle(pokemon);
-      setRound(0);
-      setScore(0);
-
-      return setSelected([]);
+    const findName = selected.find((val) => val === name);
+    if (findName) {
+      setGameOver(true);
+      return resetGame(gen);
     }
     shuffle(pokemon);
     setScore((prev) => prev + 1);
@@ -34,8 +33,10 @@ const GameBoard = () => {
     if (checkRound(round, score)) {
       setRound((prev) => prev + 1);
       setSelected([]);
+      setLoading(true);
+      setLevelUp(true);
     }
-  }, [score]);
+  }, [round, score]);
 
   useEffect(() => {
     setLoading(true);
@@ -46,26 +47,60 @@ const GameBoard = () => {
     setLoading(false);
   }, [round, gen]);
 
+  const resetGame = (gen) => {
+    setGen(gen);
+    shuffle(pokemon);
+    setRound(0);
+    setScore(0);
+    return setSelected([]);
+  };
+
+  useEffect(() => {
+    setTimeout(() => setGameOver(false), 300);
+  }, [gameOver]);
+
+  useEffect(() => {
+    setTimeout(() => setLevelUp(false), 700);
+  }, [levelUp]);
+
   return (
-    <div className="gameboard">
+    <div
+      className={
+        gameOver
+          ? "gameboardContainer redFlash"
+          : levelUp
+          ? "gameboardContainer level-up"
+          : " gameboardContainer"
+      }
+    >
       {loading ? (
         <ClipLoader size={100} color={"white"} loading={loading} />
       ) : (
-        <div className="gameboard-card-container">
-          {pokemon.map((each, index) => {
-            return (
-              <Card
-                id={index}
-                pokemon={each}
-                key={uniqid()}
-                handleClick={handleClick}
-              />
-            );
-          })}
+        <div className={"gameboard"}>
+          <div className="gameboard-card-container">
+            {pokemon.map((each, index) => {
+              return (
+                <Card
+                  id={index}
+                  pokemon={each}
+                  key={uniqid()}
+                  handleClick={handleClick}
+                />
+              );
+            })}
+          </div>
+
+          <div className="scoreboard">
+            <button className="genBtn1" onClick={() => resetGame(1)}>
+              Gen 1
+            </button>
+            <div className="score">{score}</div>
+            <button className="genBtn2" onClick={() => resetGame(2)}>
+              Gen 2
+            </button>
+          </div>
         </div>
       )}
-      <button onClick={() => setGen(1)}>Gen 1</button>
-      <button onClick={() => setGen(2)}>Gen 2</button>
     </div>
   );
 };
